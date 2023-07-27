@@ -6,12 +6,12 @@ export function UpdateTodo({ _id, handleClose, handleUpdate }) {
     function handleChange(e) {
         setData((data) => ({ ...data, [e.target.name]: e.target.value }));
     }
-    useEffect(()=>{
-        axios.get("http://localhost:8000/api/todo",{params:{_id}}).then(res=>{
-            setData({title:res.data.title,description:res.data.description});
-            
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/todo", { params: { _id } }).then(res => {
+            setData({ title: res.data.title, description: res.data.description });
+
         })
-    })
+    }, [])
     function handleSubmit(e) {
         e.preventDefault();
 
@@ -47,7 +47,7 @@ export function UpdateTodo({ _id, handleClose, handleUpdate }) {
                 value={data.title}
                 className="input"
                 onChange={handleChange}
-                />
+            />
             <label htmlFor="description" className="label">
                 Description
             </label>
